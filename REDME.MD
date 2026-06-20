@@ -527,12 +527,47 @@ http://localhost:5000/admin-panel.html
 
 
 
-<!-- Keep these commands handy. You will only need them if you manually turn off your script or need to check its status after turning on your comp/uter.-->
+====================================================================
+               PM2 BACKGROUND PROCESS CHEAT SHEET
+====================================================================
 
-<!--
+--------------------------------------------------------------------
+STEP 1: RUN THESE ONCE TO MAKE SCRIPT START WITH WINDOWS BOOT
+--------------------------------------------------------------------
+1. Install the Windows auto-start helper tool:
+   npm install pm2-windows-startup -g
 
- 1.pm2 list
-2.cd OneDrive\Desktop\commecial2
-3.pm2 start server.js --name my-fetcher
+2. Register the helper tool to your system:
+   pm2-startup install
 
--->
+3. Save your current running script into Windows boot memory:
+   pm2 save
+
+
+--------------------------------------------------------------------
+DAILY CHEAT SHEET (RUN IN STANDARD COMMAND PROMPT)
+--------------------------------------------------------------------
+
+1. CHECK IF THE SCRIPT IS RUNNING:
+   pm2 list
+
+2. VIEW LIVE SYSTEM LOGS (SEE DATA FETCHING IN REAL TIME):
+   pm2 logs my-fetcher
+
+3. RESTART THE SCRIPT (IF IT EVER FREEZES OR HANGS):
+   pm2 restart my-fetcher
+
+4. STOP THE SCRIPT MANUALLY (FREE UP PORT 5000 TO USE VS CODE):
+   pm2 stop my-fetcher
+
+5. START IT BACK UP MANUALLY:
+   pm2 start my-fetcher
+
+
+--------------------------------------------------------------------
+MANUAL START FROM SCRATCH (ONLY IF YOU DELETED IT)
+--------------------------------------------------------------------
+cd OneDrive\Desktop\commecial2
+pm2 start server.js --name my-fetcher
+pm2 save
+====================================================================
