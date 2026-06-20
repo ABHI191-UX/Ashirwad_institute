@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NexaAdmin - Gateway Authentication</title>
+    <link rel="stylesheet" href="style/login.css">
+    <!-- FontAwesome Vector Icon Pack -->
+    <link rel="stylesheet" href="https://cloudflare.com">
+</head>
+<body>
+
+    <!-- LIGHTWEIGHT FOCUSED LOGIN CARD -->
+    <div class="login-card">
+        
+        <!-- Branding Header -->
+        <div class="card-header">
+            <div class="brand-icon">
+                <i class="fa-solid fa-bolt text-lg"></i>
+            </div>
+            <h2>NexaAdmin Console</h2>
+            <p>Provide your Admin Username <strong>OR</strong> Secure Password to bypass.</p>
+        </div>
+
+        <!-- Inline Dynamic Error Notice Bar -->
+        <div id="errorNotice" class="error-notice hidden">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+            <span id="errorText">Invalid administrator keys detected.</span>
+        </div>
+
+        <!-- Form Module -->
+        <form id="gateForm" onsubmit="evaluateAccessGate(event)">
+            
+            <!-- Admin Username Field -->
+            <div class="form-group">
+                <label for="adminUserField">Admin Username</label>
+                <div class="input-container">
+                    <i class="fa-regular fa-user input-icon"></i>
+                    <input type="text" id="adminUserField" placeholder="e.g., AdminName">
+                </div>
+            </div>
+
+            <!-- Visual OR Text Divider -->
+            <div class="or-separator">
+                <span> </span>
+            </div>
+
+            <!-- Password Field -->
+            <div class="form-group">
+                <label for="passwordField">Secure Password</label>
+                <div class="input-container">
+                    <i class="fa-solid fa-lock input-icon"></i>
+                    <input type="password" id="passwordField" placeholder="••••••••">
+                    <button type="button" class="peek-btn" onclick="togglePasswordMask()">
+                        <i class="fa-regular fa-eye" id="toggleIcon"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Submit Gateway Button -->
+            <button type="submit" class="submit-btn">
+                Authenticate Credentials <i class="fa-solid fa-arrow-right-to-bracket"></i>
+            </button>
+        </form>
+
+        <!-- Security Badge Footer -->
+        <div class="card-footer">
+            <i class="fa-solid fa-shield-halved"></i>
+            <span>Encrypted console routing active.</span>
+        </div>
+    </div>
+
+    <!-- GATEWAY ROUTING LOGIC script -->
+    <script>
+        function evaluateAccessGate(event) {
+            // Stop page refresh
+            event.preventDefault();
+
+            // Target static keys
+            const validAdminKey = "abhijeet";
+            const validPasswordKey = "123";
+
+            // Target entered data fields
+            const enteredUser = document.getElementById('adminUserField').value.trim();
+            const enteredPassword = document.getElementById('passwordField').value;
+            
+            // Notification element pointers
+            const noticeBox = document.getElementById('errorNotice');
+            const noticeText = document.getElementById('errorText');
+
+            // Evaluate conditional OR statement (||)
+            if (enteredUser === validAdminKey && enteredPassword === validPasswordKey) {
+                noticeBox.classList.add('hidden');
+                // Open administrative console
+                window.location.href = "adminpanel.html";
+            } else {
+                // Trigger styled visual alert
+                noticeText.innerText = "Access Denied: Username or Password incorrect.";
+                noticeBox.classList.remove('hidden');
+            }
+        }
+
+        function togglePasswordMask() {
+            const passInput = document.getElementById('passwordField');
+            const eyeIcon = document.getElementById('toggleIcon');
+            
+            if (passInput.type === 'password') {
+                passInput.type = 'text';
+                eyeIcon.className = 'fa-regular fa-eye-slash';
+            } else {
+                passInput.type = 'password';
+                eyeIcon.className = 'fa-regular fa-eye';
+            }
+        }
+    </script>
+</body>
+</html>

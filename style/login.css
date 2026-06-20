@@ -1,0 +1,191 @@
+/* Document Reset & Variables */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #020617; /* Slate 950 */
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+}
+
+/* Focused Login Card styling */
+.login-card {
+    width: 100%;
+    max-width: 440px;
+    background: rgba(15, 23, 42, 0.7); /* Slate 900 with clear opacity */
+    border: 1px solid #1e293b; /* Slate 800 */
+    border-radius: 24px;
+    padding: 2.5rem 2rem;
+    box-shadow: 0 25px 50px -12px rgba(99, 102, 241, 0.15);
+    backdrop-filter: blur(20px);
+}
+
+/* Header branding inside card */
+.card-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.brand-icon {
+    background-color: #4f46e5; /* Indigo 600 */
+    color: #ffffff;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem auto;
+    box-shadow: 0 8px 16px rgba(79, 70, 229, 0.3);
+}
+
+.card-header h2 {
+    color: #ffffff;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.card-header p {
+    color: #94a3b8; /* Slate 400 */
+    font-size: 0.85rem;
+    line-height: 1.5;
+}
+
+.card-header strong {
+    color: #818cf8; /* Light indigo accent highlight */
+}
+
+/* Dynamic Input Form Blocks */
+.form-group {
+    margin-bottom: 0;
+}
+
+label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+}
+
+.input-container {
+    position: relative;
+}
+
+.input-icon {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #64748b; /* Slate 500 */
+    font-size: 0.9rem;
+}
+
+.input-container input {
+    width: 100%;
+    background-color: rgba(2, 6, 23, 0.7);
+    border: 1px solid #1e293b;
+    border-radius: 12px;
+    padding: 0.85rem 1rem 0.85rem 2.75rem;
+    color: #f8fafc;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+}
+
+.input-container input:focus {
+    outline: none;
+    border-color: #6366f1;
+    box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.25);
+}
+
+/* OR Statement Separator Badge */
+.or-separator {
+    text-align: center;
+    margin: 1.25rem 0;
+}
+
+.or-separator span {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: #475569; /* Slate 600 token */
+    letter-spacing: 0.1em;
+}
+
+/* Password character reveal peek switch button */
+.peek-btn {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #64748b;
+    cursor: pointer;
+}
+
+.peek-btn:hover {
+    color: #cbd5e1;
+}
+
+/* Action button trigger */
+.submit-btn {
+    width: 100%;
+    background-color: #4f46e5;
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 0.9rem;
+    padding: 0.9rem;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1.75rem;
+    transition: background-color 0.2s ease;
+}
+
+.submit-btn:hover {
+    background-color: #4338ca;
+}
+
+/* Dynamic Inline Error Alert Module styling */
+.error-notice {
+    background-color: rgba(244, 63, 94, 0.1); /* Rose 500 background transparency */
+    border: 1px solid rgba(244, 63, 94, 0.3);
+    color: #fb7185;
+    padding: 0.75rem 1rem;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 1.5rem;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Secure layout card badge footer */
+.card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-size: 0.7rem;
+    color: #475569;
+    margin-top: 2rem;
+}
