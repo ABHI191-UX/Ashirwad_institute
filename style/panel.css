@@ -378,3 +378,114 @@
             border-top: 1px solid rgba(255,255,255,0.1);
             padding-top: 1.5rem;
         }
+
+
+
+
+
+        /* Responsive Enhancements for Mobile Devices */
+@media (max-width: 768px) {
+    /* Un-fix sidebar and make it a top navigation bar if needed, or hidden by default */
+    .sidebar {
+        position: relative;
+        width: 100%;
+        min-height: auto;
+        padding: 1rem 0;
+    }
+    
+    .sidebar-header {
+        margin-bottom: 1rem;
+        padding-bottom: 1rem;
+        text-align: center;
+    }
+    
+    .sidebar-menu {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 0 1rem;
+    }
+    
+    .sidebar-menu li {
+        margin: 0.25rem;
+    }
+    
+    .sidebar-menu a {
+        padding: 0.5rem 1rem;
+        border-left: none;
+        border-bottom: 3px solid transparent;
+        border-radius: 4px;
+    }
+    
+    .sidebar-menu a:hover, .sidebar-menu a.active {
+        border-left-color: transparent;
+        border-bottom-color: var(--secondary-color);
+    }
+
+    .logout-btn {
+        margin-top: 0;
+        border-top: none;
+        padding-top: 0;
+    }
+
+    /* Reset main content margin since sidebar is no longer fixed on the left */
+    .main-content {
+        margin-left: 0;
+        padding: 1rem;
+    }
+
+    /* Center header elements on smaller screens */
+    .header {
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    /* Force tables to scroll horizontally to prevent layout breaking */
+    .table-section {
+        padding: 1rem;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    .table {
+        width: 100%;
+        min-width: 600px; /* Ensures text doesn't squash too tightly */
+    }
+
+    /* Stack action buttons vertically for easier tapping */
+    .action-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .btn-small {
+        width: 100%;
+        text-align: center;
+        padding: 0.6rem; /* Larger tap target */
+    }
+}
+
+@media (max-width: 480px) {
+    /* Further spacing optimizations for very narrow screens */
+    .header h1 {
+        font-size: 1.5rem;
+    }
+
+    .card-stat {
+        padding: 1.5rem;
+    }
+
+    .card-stat .stat-number {
+        font-size: 2rem;
+    }
+
+    .form-section {
+        padding: 1.25rem;
+    }
+
+    .btn-submit {
+        width: 100%;
+    }
+}
