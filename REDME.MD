@@ -66,7 +66,7 @@ mysql -u ghewari_app -p < database.sql
 # When prompted, enter the password: Secure@Pass123
 
 # Verify database creation
-mysql -u ghewari_app -p
+mysql -u ashirwad -p
 USE ghewari_typing;
 SHOW TABLES;  # Should show 9 tables
 EXIT;
@@ -524,3 +524,15 @@ http://localhost:5000/admin-panel.html
 **Last Updated:** June 2024  
 **Version:** 1.0.0  
 **Support:** info@ghewaritypinginstitute.com
+
+
+
+<!-- Keep these commands handy. You will only need them if you manually turn off your script or need to check its status after turning on your comp/uter.-->
+
+<!--
+
+ 1.pm2 list
+2.cd OneDrive\Desktop\commecial2
+3.pm2 start server.js --name my-fetcher
+
+-->
