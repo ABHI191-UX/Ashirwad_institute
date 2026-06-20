@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Ghewari Typing Institute</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+     
+    <!-- styles link here -->
+
+    <link rel="stylesheet" href="style/panel.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <h3><i class="fas fa-keyboard"></i> Ghewari Admin</h3>
+            <small>Management Panel</small>
+        </div>
+        <ul class="sidebar-menu">
+            <li><a href="#" onclick="showSection('dashboard')" class="nav-link active"><i class="fas fa-chart-line"></i> Dashboard</a></li>
+            <li><a href="#" onclick="showSection('inquiries')" class="nav-link"><i class="fas fa-envelope"></i> Inquiries</a></li>
+            <li><a href="#" onclick="showSection('courses')" class="nav-link"><i class="fas fa-book"></i> Courses</a></li>
+            <li><a href="#" onclick="showSection('notices')" class="nav-link"><i class="fas fa-bell"></i> Notices</a></li>
+            <li><a href="#" onclick="showSection('testimonials')" class="nav-link"><i class="fas fa-star"></i> Testimonials</a></li>
+            <li><a href="#" onclick="showSection('institute')" class="nav-link"><i class="fas fa-building"></i> Institute Info</a></li>
+        </ul>
+        <div class="logout-btn">
+            <a href="#" onclick="logout()" class="nav-link"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Header -->
+        <div class="header">
+            <h1 id="page-title">Dashboard</h1>
+            <div class="user-profile">
+                <span>Welcome, Admin!</span>
+                <img src="https://ui-avatars.com/api/?name=Admin&background=e74c3c&color=fff" alt="Admin">
+            </div>
+        </div>
+
+        <!-- Dashboard Section -->
+        <div id="dashboard" class="section active">
+            <div class="dashboard-cards">
+                <div class="card-stat primary">
+                    <h5>Total Inquiries</h5>
+                    <div class="stat-number" id="total-inquiries">0</div>
+                    <div class="stat-change">Last 30 days</div>
+                </div>
+                <div class="card-stat secondary">
+                    <h5>Enrolled Students</h5>
+                    <div class="stat-number" id="enrolled-students">0</div>
+                    <div class="stat-change">Active registrations</div>
+                </div>
+                <div class="card-stat accent">
+                    <h5>Total Courses</h5>
+                    <div class="stat-number" id="total-courses">0</div>
+                    <div class="stat-change">Available programs</div>
+                </div>
+            </div>
+
+            <div class="table-section">
+                <h3>Recent Inquiries</h3>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Mobile</th>
+                            <th>Course</th>
+                            <th>Status</th>
+                            <th>Date</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="recent-inquiries">
+                        <tr>
+                            <td colspan="6" class="text-center">Loading...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Inquiries Section -->
+        <div id="inquiries" class="section">
+            <div class="table-section">
+                <h3>Student Inquiries</h3>
+                <div class="mb-3">
+                    <input type="text" class="form-control" placeholder="Search by name or mobile...">
+                </div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Mobile</th>
+                            <th>Email</th>
+                            <th>Course</th>
+                            <th>Timing</th>
+                            <th>Status</th>
+                            <th>Date</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="all-inquiries">
+                        <tr>
+                            <td colspan="8" class="text-center">Loading inquiries...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Courses Section -->
+        <div id="courses" class="section">
+            <div class="table-section">
+                <h3>Course Management</h3>
+                <button class="btn btn-primary mb-3" onclick="showModal('addCourseModal')">
+                    <i class="fas fa-plus"></i> Add New Course
+                </button>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Course Name</th>
+                            <th>Type</th>
+                            <th>Level</th>
+                            <th>Duration</th>
+                            <th>Fees</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="courses-list">
+                        <tr>
+                            <td colspan="6" class="text-center">Loading courses...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Notices Section -->
+        <div id="notices" class="section">
+            <div class="form-section" style="margin-bottom: 2rem;">
+                <h3>Create New Notice</h3>
+                <form onsubmit="createNotice(event)">
+                    <div class="form-group">
+                        <label class="form-label">Title</label>
+                        <input type="text" class="form-control" id="notice-title" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Description</label>
+                        <textarea class="form-control" id="notice-description" rows="5" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Category</label>
+                        <select class="form-control" id="notice-category">
+                            <option value="announcement">Announcement</option>
+                            <option value="exam_schedule">Exam Schedule</option>
+                            <option value="achievement">Achievement</option>
+                            <option value="holiday">Holiday</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn-submit"><i class="fas fa-save"></i> Post Notice</button>
+                </form>
+            </div>
+
+            <div class="table-section">
+                <h3>Published Notices</h3>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Category</th>
+                            <th>Date</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="notices-list">
+                        <tr>
+                            <td colspan="4" class="text-center">Loading notices...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Testimonials Section -->
+        <div id="testimonials" class="section">
+            <div class="table-section">
+                <h3>Pending Testimonials</h3>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Student Name</th>
+                            <th>Course</th>
+                            <th>Rating</th>
+                            <th>Review</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="pending-testimonials">
+                        <tr>
+                            <td colspan="5" class="text-center">Loading testimonials...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Institute Info Section -->
+        <div id="institute" class="section">
+            <div class="form-section">
+                <h3>Institute Information</h3>
+                <form onsubmit="updateInstituteInfo(event)">
+                    <div class="form-group">
+                        <label class="form-label">Institute Name</label>
+                        <input type="text" class="form-control" id="institute-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Address</label>
+                        <textarea class="form-control" id="institute-address" rows="3" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Phone 1</label>
+                        <input type="tel" class="form-control" id="institute-phone1" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Phone 2</label>
+                        <input type="tel" class="form-control" id="institute-phone2">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-control" id="institute-email" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">About Us</label>
+                        <textarea class="form-control" id="institute-about" rows="5"></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit"><i class="fas fa-save"></i> Save Changes</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+   
+    <script src="script/panel.js"></script>
+        
+</body>
+</html>
