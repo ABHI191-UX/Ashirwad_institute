@@ -2,8 +2,8 @@
 // Form submission - NOW SENDS DATA TO MYSQL VIA THE BACKEND API
 
 // Change this line from localhost to your deployed Render backend link
-const API_BASE = 'https://onrender.com';
-// const API_BASE = 'http://localhost:5000/api';
+// const API_BASE = 'https://onrender.com';
+const API_BASE = 'http://localhost:5000/api';
 
 
 async function submitInquiry(event) {
