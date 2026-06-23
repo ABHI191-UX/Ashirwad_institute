@@ -1,4 +1,6 @@
-const API_BASE = 'http://localhost:5000/api';
+// const API_BASE = 'http://localhost:5000/api';
+
+const API_BASE = 'http://192.168.94.5:5000/api';
 
         // Navigation
         function showSection(sectionId) {

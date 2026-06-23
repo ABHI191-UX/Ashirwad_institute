@@ -311,10 +311,26 @@ app.use((req, res) => {
 
 // ==================== START SERVER ====================
 
+// const PORT = process.env.PORT || 5000;
+// app.listen(PORT, () => {
+//     console.log(`Server running on http://localhost:${PORT}`);
+//     console.log('API endpoints available at http://localhost:${PORT}/api/');
+// });
+
+
+// ==================== START SERVER ====================
+
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
-    console.log('API endpoints available at http://localhost:${PORT}/api/');
+
+// ADD '0.0.0.0' HERE TO ALLOW NETWORK-WIDE CONNECTIONS
+app.listen(PORT, '0.0.0.0', () => {
+    console.log(`Server running on port ${PORT}`);
+    console.log(`To connect from other devices, use your computer's IP address instead of localhost`);
 });
+
+module.exports = app;
+
+
+
 
 module.exports = app;
